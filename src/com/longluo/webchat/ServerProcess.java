@@ -1,4 +1,4 @@
-package LongLuo.WebChat;
+package com.longluo.webchat;
 
 /*
  * 类名：ServerProcess
@@ -9,7 +9,7 @@ import java.net.*;
 import java.util.*;
 
 class ServerProcess extends Thread {
-  private Socket socket = null;// 定义客户端套接字
+	private Socket socket = null;// 定义客户端套接字
 
 	private BufferedReader in;// 定义输入流
 	private PrintWriter out;// 定义输出流
