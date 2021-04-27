@@ -1,9 +1,10 @@
 package com.longluo.webchat;
 
-import java.io.*;
-import java.net.*;
-import java.util.*;
-import java.awt.event.*;
+import java.io.IOException;
+import java.net.BindException;
+import java.net.InetAddress;
+import java.net.ServerSocket;
+import java.net.Socket;
 
 /**
  * 类名：ChatServer
@@ -16,16 +17,15 @@ public class ChatServer extends Thread {
     ServerSocket serverSocket = null; // 创建服务器端套接字
 
     public boolean bServerIsRunning = false;
-    private final int SERVER_PORT = 8888;// 定义服务器端口号
 
     public ChatServer() {
         try {
-            serverSocket = new ServerSocket(SERVER_PORT); // 启动服务
+            serverSocket = new ServerSocket(Constants.SERVER_PORT); // 启动服务
             bServerIsRunning = true;
 
             serverFrame = new ServerFrame();
             getServerIP(); // 得到并显示服务器端IP
-            System.out.println("Server port is:" + SERVER_PORT);
+            System.out.println("Server Port is:" + Constants.SERVER_PORT);
             serverFrame.taLog.setText("服务器已经启动...");
             while (true) {
                 Socket socket = serverSocket.accept(); // 监听客户端的连接请求，并返回客户端socket
@@ -52,7 +52,7 @@ public class ChatServer extends Thread {
 
             serverFrame.txtServerName.setText(serverAddress.getHostName());
             serverFrame.txtIP.setText(serverAddress.getHostAddress());
-            serverFrame.txtPort.setText(String.valueOf(SERVER_PORT));
+            serverFrame.txtPort.setText(String.valueOf(Constants.SERVER_PORT));
 
             System.out.println("Server IP is:" + (ipAddress[0] & 0xff) + "."
                     + (ipAddress[1] & 0xff) + "." + (ipAddress[2] & 0xff) + "."

@@ -15,10 +15,21 @@ public class ServerFrame extends JFrame implements ActionListener {
     protected JTabbedPane tpServer;
 
     // 服务器信息面板
-    protected JPanel pnlServer, pnlServerInfo;
-    protected JLabel lblNumber, lblServerName, lblIP, lblPort, lblLog;
-    protected JTextField txtNumber, txtServerName, txtIP, txtPort;
-    protected JButton btnStop, btnSaveLog;
+    protected JPanel pnlServer;
+    protected JPanel pnlServerInfo;
+
+    protected JLabel lblNumber;
+    protected JLabel lblServerName;
+    protected JLabel lblIP;
+    protected JLabel lblPort;
+    protected JLabel lblLog;
+
+    protected JTextField txtNumber;
+    protected JTextField txtServerName;
+    protected JTextField txtIP;
+    protected JTextField txtPort;
+    protected JButton btnStop;
+    protected JButton btnSaveLog;
     protected TextArea taLog;
 
     // 用户信息面板
@@ -29,10 +40,11 @@ public class ServerFrame extends JFrame implements ActionListener {
 
     // 关于本软件
     protected JPanel pnlAbout;
-    protected JLabel lblVersionNo, lblAbout;
+    protected JLabel lblVersionNo;
+    protected JLabel lblAbout;
 
     public ServerFrame() {
-        super("WebChat Room 聊天服务器");
+        super(Constants.APP_SERVER_NAME);
         setSize(550, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
@@ -50,51 +62,51 @@ public class ServerFrame extends JFrame implements ActionListener {
         // 服务器信息
         pnlServerInfo = new JPanel(new GridLayout(14, 1));
         pnlServerInfo.setBackground(new Color(52, 130, 203));
-        pnlServerInfo.setFont(new Font("宋体", 0, 12));
+        pnlServerInfo.setFont(new Font(Constants.FONT_SONG, 0, 12));
         pnlServerInfo.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createTitledBorder(""),
                 BorderFactory.createEmptyBorder(1, 1, 1, 1)));
 
-        lblNumber = new JLabel("当前在线人数:");
+        lblNumber = new JLabel(Constants.ONLINE_USERS_NUM);
         lblNumber.setForeground(Color.YELLOW);
-        lblNumber.setFont(new Font("宋体", 0, 12));
-        txtNumber = new JTextField("0 人", 10);
+        lblNumber.setFont(new Font(Constants.FONT_SONG, 0, 12));
+        txtNumber = new JTextField(Constants.ZERO_NUM, 10);
         txtNumber.setBackground(Color.decode("#d6f4f2"));
-        txtNumber.setFont(new Font("宋体", 0, 12));
+        txtNumber.setFont(new Font(Constants.FONT_SONG, 0, 12));
         txtNumber.setEditable(false);
 
-        lblServerName = new JLabel("服务器名称:");
+        lblServerName = new JLabel(Constants.SERVER_NAME);
         lblServerName.setForeground(Color.YELLOW);
-        lblServerName.setFont(new Font("宋体", 0, 12));
+        lblServerName.setFont(new Font(Constants.FONT_SONG, 0, 12));
         txtServerName = new JTextField(10);
         txtServerName.setBackground(Color.decode("#d6f4f2"));
-        txtServerName.setFont(new Font("宋体", 0, 12));
+        txtServerName.setFont(new Font(Constants.FONT_SONG, 0, 12));
         txtServerName.setEditable(false);
 
-        lblIP = new JLabel("服务器IP:");
+        lblIP = new JLabel(Constants.SERVER_IP);
         lblIP.setForeground(Color.YELLOW);
-        lblIP.setFont(new Font("宋体", 0, 12));
+        lblIP.setFont(new Font(Constants.FONT_SONG, 0, 12));
         txtIP = new JTextField(10);
         txtIP.setBackground(Color.decode("#d6f4f2"));
-        txtIP.setFont(new Font("宋体", 0, 12));
+        txtIP.setFont(new Font(Constants.FONT_SONG, 0, 12));
         txtIP.setEditable(false);
 
-        lblPort = new JLabel("服务器端口:");
+        lblPort = new JLabel(Constants.SERVER_PORT_DESC);
         lblPort.setForeground(Color.YELLOW);
-        lblPort.setFont(new Font("宋体", 0, 12));
-        txtPort = new JTextField("8888", 10);
+        lblPort.setFont(new Font(Constants.FONT_SONG, 0, 12));
+        txtPort = new JTextField(String.valueOf(Constants.SERVER_PORT), 10);
         txtPort.setBackground(Color.decode("#d6f4f2"));
-        txtPort.setFont(new Font("宋体", 0, 12));
+        txtPort.setFont(new Font(Constants.FONT_SONG, 0, 12));
         txtPort.setEditable(false);
 
-        btnStop = new JButton("关闭服务器(C)");
+        btnStop = new JButton(Constants.CLOSE_SERVER);
         btnStop.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 closeServer();
             }
         });
         btnStop.setBackground(Color.ORANGE);
-        btnStop.setFont(new Font("宋体", 0, 12));
+        btnStop.setFont(new Font(Constants.FONT_SONG, 0, 12));
 
         pnlServerInfo.setBounds(5, 5, 100, 400);
         pnlServerInfo.add(lblNumber);
@@ -111,20 +123,20 @@ public class ServerFrame extends JFrame implements ActionListener {
         pnlServer.setLayout(null);
         pnlServer.setBackground(new Color(52, 130, 203));
 
-        lblLog = new JLabel("[服务器日志]");
+        lblLog = new JLabel(Constants.SERVER_LOG);
         lblLog.setForeground(Color.YELLOW);
-        lblLog.setFont(new Font("宋体", 0, 12));
+        lblLog.setFont(new Font(Constants.FONT_SONG, 0, 12));
         taLog = new TextArea(20, 50);
-        taLog.setFont(new Font("宋体", 0, 12));
+        taLog.setFont(new Font(Constants.FONT_SONG, 0, 12));
 
-        btnSaveLog = new JButton("保存日志(S)");
+        btnSaveLog = new JButton(Constants.SAVE_LOG);
         btnSaveLog.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent arg0) {
                 saveLog();
             }
         });
         btnSaveLog.setBackground(Color.ORANGE);
-        btnSaveLog.setFont(new Font("宋体", 0, 12));
+        btnSaveLog.setFont(new Font(Constants.FONT_SONG, 0, 12));
 
         lblLog.setBounds(110, 5, 100, 30);
         taLog.setBounds(110, 35, 300, 370);
@@ -146,19 +158,19 @@ public class ServerFrame extends JFrame implements ActionListener {
                 BorderFactory.createTitledBorder(""),
                 BorderFactory.createEmptyBorder(1, 1, 1, 1)));
 
-        lblUser = new JLabel("[在线用户列表]");
-        lblUser.setFont(new Font("宋体", 0, 12));
+        lblUser = new JLabel(Constants.ONLINE_USERS_LIST);
+        lblUser.setFont(new Font(Constants.FONT_SONG, 0, 12));
         lblUser.setForeground(Color.YELLOW);
 
         lstUser = new JList();
-        lstUser.setFont(new Font("宋体", 0, 12));
+        lstUser.setFont(new Font(Constants.FONT_SONG, 0, 12));
         lstUser.setVisibleRowCount(17);
         lstUser.setFixedCellWidth(180);
         lstUser.setFixedCellHeight(18);
 
         spUser = new JScrollPane();
         spUser.setBackground(Color.cyan);
-        spUser.setFont(new Font("宋体", 0, 12));
+        spUser.setFont(new Font(Constants.FONT_SONG, 0, 12));
         spUser.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         spUser.getViewport().setView(lstUser);
 
@@ -173,15 +185,15 @@ public class ServerFrame extends JFrame implements ActionListener {
         pnlAbout = new JPanel();
         pnlAbout.setLayout(null);
         pnlAbout.setBackground(new Color(52, 130, 203));
-        pnlAbout.setFont(new Font("宋体", 0, 14));
+        pnlAbout.setFont(new Font(Constants.FONT_SONG, 0, 14));
 
-        lblVersionNo = new JLabel("Version No. v1.51");
-        lblVersionNo.setFont(new Font("宋体", 0, 14));
+        lblVersionNo = new JLabel(Constants.VERSION_INFO);
+        lblVersionNo.setFont(new Font(Constants.FONT_SONG, 0, 14));
         lblVersionNo.setForeground(Color.YELLOW);
 
         lblAbout = new JLabel();
-        lblAbout.setFont(new Font("Consolas", 0, 14));
-        lblAbout.setText("Long.Luo Created @8th, March, 2012" + "at Shenzhen, China");
+        lblAbout.setFont(new Font(Constants.FONT_SONG, 0, 14));
+        lblAbout.setText(Constants.APP_ABOUT_INFO);
         lblAbout.setForeground(Color.YELLOW);
 
         lblVersionNo.setBounds(110, 5, 100, 30);
@@ -193,11 +205,11 @@ public class ServerFrame extends JFrame implements ActionListener {
         // 主标签面板
         tpServer = new JTabbedPane(JTabbedPane.TOP);
         tpServer.setBackground(Color.CYAN);
-        tpServer.setFont(new Font("宋体", 0, 14));
+        tpServer.setFont(new Font(Constants.FONT_SONG, 0, 14));
 
-        tpServer.add("服务器管理", pnlServer);
-        tpServer.add("在线用户", pnlUser);
-        tpServer.add("关于本软件", pnlAbout);
+        tpServer.add(Constants.SERVER_ADMIN, pnlServer);
+        tpServer.add(Constants.ONLINE_USERS, pnlUser);
+        tpServer.add(Constants.ABOUT_APP, pnlAbout);
 
         this.getContentPane().add(tpServer);
         setVisible(true);
@@ -213,7 +225,7 @@ public class ServerFrame extends JFrame implements ActionListener {
             String temp = taLog.getText();
             fileoutput.write(temp.getBytes());
             fileoutput.close();
-            JOptionPane.showMessageDialog(null, "记录保存在log.txt");
+            JOptionPane.showMessageDialog(null, Constants.SAVE_LOG_FILE);
         } catch (Exception e) {
             System.out.println(e);
         }

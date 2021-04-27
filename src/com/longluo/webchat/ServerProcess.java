@@ -54,7 +54,7 @@ class ServerProcess extends Thread {
         } catch (IOException e) { // 用户关闭客户端造成此异常，关闭该用户套接字。
             String leaveUser = closeSocket();
             Date t = new Date();
-            log("用户" + leaveUser + "已经退出, " + "退出时间:" + t.toLocaleString());
+            log(Constants.USER + leaveUser + "已经退出, " + "退出时间:" + t.toLocaleString());
             try {
                 freshClientsOnline();
             } catch (IOException e1) {
@@ -134,7 +134,7 @@ class ServerProcess extends Thread {
                     "rw");
             userFile.seek(userFile.length()); // 在文件尾部加入新用户信息
             userFile.writeBytes(name + "|" + password + "\r\n");
-            log("用户" + name + "注册成功, " + "注册时间:" + t.toLocaleString());
+            log(Constants.USER + name + "注册成功, " + "注册时间:" + t.toLocaleString());
             userLoginSuccess(name); // 自动登陆聊天室
         }
     }
@@ -150,7 +150,7 @@ class ServerProcess extends Thread {
         boolean succeed = false;
         Date t = new Date();
 
-        log("用户" + name + "正在登陆..." + "\n" + "密码 :" + password + "\n" + "端口 "
+        log(Constants.USER + name + "正在登陆..." + "\n" + "密码 :" + password + "\n" + "端口 "
                 + socket + t.toLocaleString());
         System.out.println("[USER LOGIN] " + name + ":" + password + ":"
                 + socket);
@@ -167,7 +167,7 @@ class ServerProcess extends Thread {
         }
         if (!succeed) {
             out.println("warning|" + name + "登陆失败，请检查您的输入!");
-            log("用户" + name + "登陆失败！" + t.toLocaleString());
+            log(Constants.USER + name + "登陆失败！" + t.toLocaleString());
             System.out.println("[SYSTEM] " + name + " login fail!");
         }
     }
@@ -186,7 +186,7 @@ class ServerProcess extends Thread {
         onlineUser.addElement(name);
         socketUser.addElement(socket);
 
-        log("用户" + name + "登录成功，" + "登录时间:" + t.toLocaleString());
+        log(Constants.USER + name + "登录成功，" + "登录时间:" + t.toLocaleString());
 
         freshClientsOnline();
         sendAll("talk|>>>欢迎 " + name + " 进来与我们一起交谈!");
@@ -214,7 +214,7 @@ class ServerProcess extends Thread {
                 + calendar.get(Calendar.SECOND) + ")";
         strTalkInfo += strTime;
 
-        log("用户" + strSender + "对 " + strReceiver + "说:" + strTalkInfo
+        log(Constants.USER + strSender + "对 " + strReceiver + "说:" + strTalkInfo
                 + t.toLocaleString());
 
         if (strReceiver.equals("All")) {

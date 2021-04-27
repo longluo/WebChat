@@ -29,12 +29,22 @@ public class ChatClient extends JFrame implements ActionListener {
 
     // 登陆界面
     JPanel pnlLogin;
-    JLabel lblServerIP, lblName, lblPassword;
-    JTextField txtTalk, txtServerIP, txtName;
-    JPasswordField txtPassword;
-    JButton btnLogin, btnReg, btnExit;
 
-    JDialog dialogLogin = new JDialog(this, "登陆", true);
+    JLabel lblServerIP;
+    JLabel lblName;
+    JLabel lblPassword;
+
+    JTextField txtTalk;
+    JTextField txtServerIP;
+    JTextField txtName;
+
+    JPasswordField txtPassword;
+
+    JButton btnLogin;
+    JButton btnReg;
+    JButton btnExit;
+
+    JDialog dialogLogin = new JDialog(this, Constants.LOGIN, true);
 
     Socket socket = null;
     BufferedReader in = null;
@@ -55,21 +65,21 @@ public class ChatClient extends JFrame implements ActionListener {
         pnlLogin = new JPanel();
         pnlLogin.setLayout(gl);
 
-        lblServerIP = new JLabel("服务器IP:");
-        lblName = new JLabel("    用户名:");
-        lblPassword = new JLabel("     密码:  ");
+        lblServerIP = new JLabel(Constants.SERVER_IP);
+        lblName = new JLabel(Constants.USER_NAME);
+        lblPassword = new JLabel(Constants.PASSWORD);
         txtServerIP = new JTextField(12);
         txtName = new JTextField(12);
         txtPassword = new JPasswordField(12);
 
         txtServerIP.setText("127.0.0.1");
 
-        btnLogin = new JButton("登陆");
-        btnReg = new JButton("注册");
-        btnExit = new JButton("退出");
+        btnLogin = new JButton(Constants.LOGIN);
+        btnReg = new JButton(Constants.REGISTER);
+        btnExit = new JButton(Constants.EXIT);
 
-        btnTalk = new JButton("发送");
-        lblTalk = new JLabel("发言:");
+        btnTalk = new JButton(Constants.SEND);
+        lblTalk = new JLabel(Constants.SPEAK);
 
         lblTo = new JLabel(" To :");
         txtTalk = new JTextField(30);
