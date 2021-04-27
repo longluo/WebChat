@@ -14,7 +14,7 @@ import java.util.*;
  * @author longluo
  */
 public class ChatClient extends JFrame implements ActionListener {
-    JFrame clientFrame = new JFrame("WebChat 网络聊天室");
+    JFrame clientFrame = new JFrame("WebChatRoom 网络聊天室");
 
     GridBagLayout gl;
     BorderLayout bdl;

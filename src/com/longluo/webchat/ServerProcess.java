@@ -22,7 +22,7 @@ class ServerProcess extends Thread {
     private String strReceive, strKey;
     private StringTokenizer st;
 
-    private final String USERLIST_FILE = "F:\\Android\\Work\\user.txt"; // 设定存放用户信息的文件
+    private final String USERLIST_FILE = System.getProperty("user.dir") + "user.txt"; // 设定存放用户信息的文件
     private ServerFrame sFrame = null;
 
     public ServerProcess(Socket client, ServerFrame frame) throws IOException {
