@@ -14,3 +14,7 @@ bin/
 *.jar
 *.war
 *.ear
+
+*_user.txt
+
+

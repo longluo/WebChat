@@ -14,7 +14,7 @@ import java.util.*;
  * @author longluo
  */
 public class ChatClient extends JFrame implements ActionListener {
-    JFrame clientFrame = new JFrame("WebChatRoom 网络聊天室");
+    JFrame clientFrame = new JFrame(Constants.APP_SERVER_NAME);
 
     GridBagLayout gl;
     BorderLayout bdl;
@@ -50,7 +50,10 @@ public class ChatClient extends JFrame implements ActionListener {
     BufferedReader in = null;
     PrintWriter out = null;
 
-    String strSend, strReceive, strKey, strStatus;
+    String strSend;
+    String strReceive;
+    String strKey;
+    String strStatus;
     private StringTokenizer st;
 
     public ChatClient() {

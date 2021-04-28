@@ -4,10 +4,12 @@ package com.longluo.webchat;
  * The Project's Constants
  */
 public class Constants {
-    public static final int SERVER_PORT = 8888;// 定义服务器端口号
-
-    public static final String APP_NAME = "Web ChatRoom 网络聊天室";
+    // The Strings
+    public static final String APP_NAME = "WebChat";
+    public static final String APP_NAME_STR = "Web ChatRoom 网络聊天室";
     public static final String APP_SERVER_NAME = "Web ChatRoom 聊天服务器";
+
+    public static final int SERVER_PORT = 8888;// 定义服务器端口号
 
     public static final String LOGIN = "登陆";
     public static final String REGISTER = "注册";
