@@ -10,7 +10,7 @@ import java.util.*;
  *
  * @author longluo
  */
-class ServerProcess extends Thread {
+public class ServerProcess extends Thread {
     private Socket socket = null;// 定义客户端套接字
 
     private BufferedReader in;// 定义输入流
@@ -54,14 +54,14 @@ class ServerProcess extends Thread {
         } catch (IOException e) { // 用户关闭客户端造成此异常，关闭该用户套接字。
             String leaveUser = closeSocket();
             Date t = new Date();
-            log(Constants.USER + leaveUser + "已经退出, " + "退出时间:" + t.toLocaleString());
+            log(Constants.USER + leaveUser + Constants.HAD_EXIT + Constants.EXIT_TIME + t.toLocaleString());
             try {
                 freshClientsOnline();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
             System.out.println("[SYSTEM] " + leaveUser + " leave chatroom!");
-            sendAll("talk|>>>" + leaveUser + " 恋恋不舍的离开了聊天室。");
+            sendAll("talk|>>>" + leaveUser + Constants.LEAVE_ROOM);
         }
     }
 
